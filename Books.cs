@@ -18,7 +18,14 @@ namespace MidtermNew
         public Books(string barcode, string title, string checkedOut, string genre, string year, string dueDate, string author, string medium)
             : base(barcode, title, checkedOut, genre, year, dueDate)
         {
-
+            Barcode = barcode;
+            Title = title;
+            CheckedOut = checkedOut;
+            Genre = genre;
+            Year = year;
+            DueDate = dueDate;
+            Author = author;
+            Medium = medium;
         }
         public static List<Books> FilterBooksByAuthor(List<Books> bookList)
         {
@@ -33,6 +40,7 @@ namespace MidtermNew
                     {
                         bookOptions.Add(book);
                     }
+                    
                 }
                 return bookOptions;
             }
@@ -55,10 +63,6 @@ namespace MidtermNew
                     {
                         bookOptions.Add(book);
                     }
-                }
-                foreach(Books x in bookOptions)
-                {
-                    Console.WriteLine(x.Title+x.Author);
                 }
                 return bookOptions;
             }

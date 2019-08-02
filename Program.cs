@@ -28,6 +28,8 @@ namespace MidtermNew
             while (runProgram)
             {
                 ChooseMedia(books, music, movies);
+                books[12].Title = "Fckthis";
+                
             }
 
         }
@@ -129,17 +131,18 @@ namespace MidtermNew
                 {
                     if (userChoice == 1)
                     {
-                        SearchBooksBy(books);
+                        List<Books> bookOptions = SearchBooksBy(books);
+                        ChooseBookItem(bookOptions);
                         go = false;
                     }
                     else if (userChoice == 2)
                     {
-                        SearchMusicBy(music);
+                        List<Music> musicOptions = SearchMusicBy(music);
                         go = false;
                     }
                     else if (userChoice == 3)
                     {
-                        SearchMoviesBy(movies);
+                       List<Movies> movieOptions = SearchMoviesBy(movies);
                         go = false;
                     }
                     else
@@ -188,6 +191,29 @@ namespace MidtermNew
                 Console.WriteLine("Sorry, I did not recognize that input. Please try again\n");
             }
         }
+        public static void ChooseBookItem(List<Books> bookOptions)
+        {
+            Console.WriteLine("Choose a book:");
+            PrintBookList(bookOptions);
+            string input = Console.ReadLine();
+            if(int.TryParse(input, out int num))
+            {
+                if(num > 0 && num<= bookOptions.Count)
+                {
+                    int index = num - 1;
+                    Console.WriteLine($"\tTitle: {bookOptions[index].Title}\n\tAuthor: {bookOptions[index].Author}\n\tGenre: " +
+                        $"{bookOptions[index].Genre}\n\tYear Published: {bookOptions[index].Year}\n\tMedium: {bookOptions[index].Medium}" +
+                        $"\n\tBarcode: {bookOptions[index].Barcode}\n\t \n\tStatus:{bookOptions[index].CheckedOut}");
+                }
+            }
+            else
+            {
+                ChooseBookItem(bookOptions);
+            }
+
+
+
+        }
         #endregion
         #region Print Methods
         public static void PrintBookList(List<Books> books)
@@ -219,31 +245,32 @@ namespace MidtermNew
         }
         #endregion
         #region Search Methods
-        public static  void SearchBooksBy(List<Books> books)
+      
+        public static  List<Books> SearchBooksBy(List<Books> books)
         {
             Console.WriteLine("How would you like to choose a book?\n1.View a full list of books\n2.Search by title\n3.Search by author");
             string input = Console.ReadLine();
             if (input == "1")
             {
-                PrintBookList(books);
+                return books;
             }
             else if (input == "2")
             {
                 List<Books> bookOptions = Books.FilterBooksByTitle(books);
-                PrintBookList(bookOptions);
+                return bookOptions;
             }
             else if (input == "3")
             {
                List<Books> bookOptions = Books.FilterBooksByAuthor(books);
-                PrintBookList(bookOptions);
+               return bookOptions;
             }
             else
             {
                 Console.WriteLine("That isn't an option.\n");
-                SearchBooksBy(books);
+                return SearchBooksBy(books);
             }
         }
-        public static void SearchMusicBy(List<Music> music)
+        public static List<Music> SearchMusicBy(List<Music> music)
         {
             Console.WriteLine("How would you like to choose your music?\n\t1.View a full list of music" +
                 "\n\t2.Search by title\n\t3.Search by Artist\n");
@@ -252,47 +279,47 @@ namespace MidtermNew
             string input = Console.ReadLine();
             if (input == "1")
             {
-                PrintMusicList(music);
+                return music;
             }
             else if (input == "2")
             {
                 List<Music> musicOptions = Music.FilterMusicByTitle(music);
-                PrintMusicList(musicOptions);
+                return musicOptions;
             }
             else if(input == "3")
             {
                 List<Music> musicOptions = Music.FilterMusicByArtist(music);
-                PrintMusicList(musicOptions);
+                return musicOptions;
             }
             else
             {
                 Console.WriteLine("That isn't an option.\n");
-                SearchMusicBy(music);
+                return SearchMusicBy(music);
             }
         }
-        public static void SearchMoviesBy(List<Movies> movies)
+        public static List<Movies> SearchMoviesBy(List<Movies> movies)
         {
             Console.WriteLine("How would you like to choose a movie?\n\t1.View a full list of movies\n\t2.Search by title" +
                 "\n3.Search by director");
             string input = Console.ReadLine();
             if (input == "1")
             {
-                PrintMoviesList(movies);
+                return movies;
             }
             else if (input == "2")
             {
                 List<Movies> movieOptions = Movies.FilterMoviesByTitle(movies);
-                PrintMoviesList(movieOptions);
+                return movieOptions;
             }
             else if(input == "3")
             {
                 List<Movies> movieOptions = Movies.FilterMoviesByDirector(movies);
-                PrintMoviesList(movieOptions);
+                return movieOptions;
             }
             else
             {
                 Console.WriteLine("That isn't an option.\n");
-                SearchMoviesBy(movies);
+                return SearchMoviesBy(movies);
             }
         }
         #endregion

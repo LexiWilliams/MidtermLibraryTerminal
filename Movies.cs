@@ -15,11 +15,17 @@ namespace MidtermNew
         {
 
         }
-        public Movies(string barcode, string title, string checkOut,
+        public Movies(string barcode, string title, string checkedOut,
             string genre, string year, string dueDate, string director)
-        : base(barcode, title, checkOut, genre, year, dueDate)
+        : base(barcode, title, checkedOut, genre, year, dueDate)
         {
-
+            Barcode = barcode;
+            Title = title;
+            CheckedOut = checkedOut;
+            Genre = genre;
+            Year = year;
+            DueDate = dueDate;
+            Director = director;
         }
         public static List<Movies> FilterMoviesByDirector(List<Movies> movieList)
         {

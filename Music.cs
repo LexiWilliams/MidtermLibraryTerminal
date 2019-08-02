@@ -13,10 +13,16 @@ namespace MidtermNew
         {
 
         }
-        public Music(string barcode, string title, string checkOut, string genre, string year, string dueDate, string artist)
-        : base(barcode, title, checkOut, genre, year, dueDate)
+        public Music(string barcode, string title, string checkedOut, string genre, string year, string dueDate, string artist)
+        : base(barcode, title, checkedOut, genre, year, dueDate)
         {
-
+            Barcode = barcode;
+            Title = title;
+            CheckedOut = checkedOut;
+            Genre = genre;
+            Year = year;
+            DueDate = dueDate;
+            Artist = artist;
         }
         public void DisplayMusicMenu()
         {
@@ -50,7 +56,7 @@ namespace MidtermNew
             Console.WriteLine("What title would you like to search for?");
             string input = Console.ReadLine().ToLower();
             List<Music> musicOptions = new List<Music>();
-            if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
+            if (Regex.IsMatch(input, @"^[a-zA-Z. ']+$"))
             {
                 foreach (Music music in musicList)
                 {
