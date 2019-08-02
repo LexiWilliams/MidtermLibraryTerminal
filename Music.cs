@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace MidtermNew
 {
@@ -74,6 +75,65 @@ namespace MidtermNew
             }
 
 
+        }
+        public static List<Music> SearchMusicBy(List<Music> music)
+        {
+            Console.WriteLine("How would you like to choose your music?\n\t1.View a full list of music" +
+                "\n\t2.Search by title\n\t3.Search by Artist\n");
+
+
+            string input = Console.ReadLine();
+            if (input == "1")
+            {
+                return music;
+            }
+            else if (input == "2")
+            {
+                List<Music> musicOptions = Music.FilterMusicByTitle(music);
+                return musicOptions;
+            }
+            else if (input == "3")
+            {
+                List<Music> musicOptions = Music.FilterMusicByArtist(music);
+                return musicOptions;
+            }
+            else
+            {
+                Console.WriteLine("That isn't an option.\n");
+                return SearchMusicBy(music);
+            }
+        }
+        public static void PrintMusicList(List<Music> music)
+        {
+            int count = 0;
+            foreach (Music x in music)
+            {
+                count++;
+                Console.WriteLine($"\t{count}. {x.Title}");
+            }
+        }
+        public static void ReadFileMusic(List<Music> music)
+        {
+            StreamReader reader = new StreamReader("../../Music.txt");
+            string line = reader.ReadLine();
+            while (line != null)
+            {
+                string[] words = line.Split('|');
+                music.Add(new Music(words[0], words[1], words[2], words[3], words[4], words[5], words[6]));
+                line = reader.ReadLine();
+            }
+            reader.Close();
+        }
+        public static void WriteFileMusic(List<Music> addMusic)
+        {
+            StreamWriter writer = new StreamWriter("../../Music.txt");
+
+            foreach (Music music in addMusic)
+            {
+                File.AppendAllText("../../Music.txt", string.Format($"\n{music.Barcode}|{music.Title}|{music.CheckedOut}|{music.Genre}|" +
+                    $"{music.Year}|{music.DueDate}|{music.Artist}"));
+            }
+            writer.Close();
         }
     }
 }

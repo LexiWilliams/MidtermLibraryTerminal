@@ -1,12 +1,12 @@
-﻿gkhjlkjvk567|Amish Paradise|0|Polka|1996|Not checked out|'Weird Al Yankovich
-sdfgbjnk4567|Hoop De Doo|0|Polka|1997|Not checked out|Jimmy Sturr
-sdfghjk12356|In Heaven There Is No Beer|0|Polka|1986|Not checked out|Polkacide
-sdfghjklgh12|Bohemian Rhapsody|0|Rock & Roll|1975|Not checked out|Queen
-sxdcfgvhbjnk|Rock and Roll|0||Rock & Roll|1971|Not checked out|Led Zeppelin
-xrcfgvhbjnk1|Born To Be Wild|0|Rock & Roll|1968|Not checked out|Steppenwolf
-junybtvrvfbg|Nuthin' but a G Thang|0|90's Rap|1992|Not checked out|Dr. Dre
-jhdxcyuviboj|Gin And Juice|0|90's Rap|1993|Not checked out|Snoop Dog
-jhgfcgvhbjnk|Gansta's Paradise|0|90's Rap|1995|Not checked out|Coolio
-njhytfcvbnjj|Party Like a Rockstar|0|Hard Rock|2005|Not checked out|NickleBack
-nhtfcvbjkmjh|With Arms Wide Open|0|Hard Rock|1999|Not checked out|Creed
-njhgfvbnjkmn|Thuderstruck|0|Hard Rock|1990|Not checked out|AC/DC
+﻿gkhjlkjvk567|Amish Paradise|Available|Polka|1996|Not checked out|'Weird Al Yankovich
+sdfgbjnk4567|Hoop De Doo|Available|Polka|1997|Not checked out|Jimmy Sturr
+sdfghjk12356|In Heaven There Is No Beer|Available|Polka|1986|Not checked out|Polkacide
+sdfghjklgh12|Bohemian Rhapsody|Available|Rock & Roll|1975|Not checked out|Queen
+sxdcfgvhbjnk|Rock and Roll|Available||Rock & Roll|1971|Not checked out|Led Zeppelin
+xrcfgvhbjnk1|Born To Be Wild|Available|Rock & Roll|1968|Not checked out|Steppenwolf
+junybtvrvfbg|Nuthin' but a G Thang|Available|90's Rap|1992|Not checked out|Dr. Dre
+jhdxcyuviboj|Gin And Juice|Available|90's Rap|1993|Not checked out|Snoop Dog
+jhgfcgvhbjnk|Gansta's Paradise|Available|90's Rap|1995|Not checked out|Coolio
+njhytfcvbnjj|Party Like a Rockstar|Available|Hard Rock|2005|Not checked out|NickleBack
+nhtfcvbjkmjh|With Arms Wide Open|Available|Hard Rock|1999|Not checked out|Creed
+njhgfvbnjkmn|Thuderstruck|Available|Hard Rock|1990|Not checked out|AC/DC

@@ -14,7 +14,7 @@ namespace MidtermNew
             return int.TryParse(input, out int variable);
         }
 
-        public bool IsYesNo(string input)
+        public static bool IsYesNo(string input)
         {
             if (input == "yes" || input == "y" || input == "no" || input == "n")
             {

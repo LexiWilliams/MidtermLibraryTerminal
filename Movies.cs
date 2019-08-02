@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MidtermNew
 {
@@ -70,6 +71,63 @@ namespace MidtermNew
                 Console.WriteLine("That is not a valid title.");
                 return FilterMoviesByTitle(movieList);
             }
+        }
+        public static List<Movies> SearchMoviesBy(List<Movies> movies)
+        {
+            Console.WriteLine("How would you like to choose a movie?\n\t1.View a full list of movies\n\t2.Search by title" +
+                "\n\t3.Search by director");
+            string input = Console.ReadLine();
+            if (input == "1")
+            {
+                return movies;
+            }
+            else if (input == "2")
+            {
+                List<Movies> movieOptions = Movies.FilterMoviesByTitle(movies);
+                return movieOptions;
+            }
+            else if (input == "3")
+            {
+                List<Movies> movieOptions = Movies.FilterMoviesByDirector(movies);
+                return movieOptions;
+            }
+            else
+            {
+                Console.WriteLine("That isn't an option.\n");
+                return SearchMoviesBy(movies);
+            }
+        }
+        public static void PrintMoviesList(List<Movies> movies)
+        {
+            int count = 0;
+            foreach (Movies x in movies)
+            {
+                count++;
+                Console.WriteLine($"\t{count}. {x.Title}");
+            }
+        }
+        public static void ReadFileMovies(List<Movies> movies)
+        {
+            StreamReader reader = new StreamReader("../../Movies.txt");
+            string line = reader.ReadLine();
+            while (line != null)
+            {
+                string[] words = line.Split('|');
+                movies.Add(new Movies(words[0], words[1], words[2], words[3], words[4], words[5], words[6]));
+                line = reader.ReadLine();
+            }
+            reader.Close();
+        }
+        public static void WriteFileMovies(List<Movies> addMovies)
+        {
+            StreamWriter writer = new StreamWriter("../../Movies.txt");
+
+            foreach (Movies movies in addMovies)
+            {
+                File.AppendAllText("../../movies.txt", string.Format($"\n{movies.Barcode}|{movies.Title}|{movies.CheckedOut}|{movies.Genre}|" +
+                    $"{movies.Year}|{movies.DueDate}|{movies.Director}"));
+            }
+            writer.Close();
         }
 
     }
