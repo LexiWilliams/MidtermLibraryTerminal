@@ -1,0 +1,7 @@
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\obj\Debug\MidtermNew.csprojAssemblyReference.cache
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\obj\Debug\MidtermNew.csproj.CoreCompileInputs.cache
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\bin\Debug\MidtermNew.exe.config
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\bin\Debug\MidtermNew.exe
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\bin\Debug\MidtermNew.pdb
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\obj\Debug\MidtermNew.exe
+C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\obj\Debug\MidtermNew.pdb

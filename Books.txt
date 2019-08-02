@@ -1,0 +1,13 @@
+﻿6sadffs8d7|Gone With the Wind|0|Historical Fiction|1936|Not checked out|Margaret Mitchell|Paperback
+sdaf87sda6f|The Hobbit|0|High Fantasy|1937|Not checked out|JRR Tolkien|paperback
+sdfg7fs89d|Paper Towns|0|young adult|2008|Not checked out|John Green|paperback
+asf89as7f987|IT|0|Horror|1986|Not checked out|Stephen King|hardcover
+sad9f8asd7|Pride and Prejudice|0|Classic Regency|1813|Not checked out|Jane Austen|paperback
+asd89f7asd|The Notebook|0|Romance|1996|Not checked out|Nicholas Sparks|paperback
+asd87f96asd|Harry Potter and the Philosopher's Stone|0|Fantasy|1998|Not checked out|J. K. Rowling|hardcover
+s87fd676ff|Harry Potter and the Chamber of Secrets|0|Fantasy|1998|Not checked out|J. K. Rowling|hardcover
+sadf76dsa|Harry Potter and the Prisoner of Azkaban|0|Fantasy|1999|Not checked out|J. K. Rowling|paperback
+sd7fsad8f76|Harry Potter and the Goblet of Fire|0|Fantasy|2000|Not checked out|J. K. Rowling|paperback
+sdf76fs7|Harry Potter and the Order of the Phoenix|0|Fantasy|2003|Not checked out|J. K. Rowling|hardover
+asdf876sad|Harry Potter and the Half-Blood Prince|0|Fantasy|2005|Not checked out|J. K. Rowling|paperback
+asdf8976asd|Harry Potter and the Deathly Hallows|0|Fantasy|2007|Not checked out|J. K. Rowling|paperback
