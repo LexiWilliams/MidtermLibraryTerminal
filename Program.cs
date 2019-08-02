@@ -155,6 +155,27 @@ namespace MidtermNew
                 }
             }
         }
+        public static LibraryItems ChooseOption(List <LibraryItems> list)
+        {
+            string input = Console.ReadLine();
+            bool isValid = Validator.IsInt(input);
+            if (isValid)
+            {
+                isValid = Validator.IsInRange(int.Parse(input), 1, list.Count);
+                if (isValid)
+                {
+                    return list[(int.Parse(input)) - 1];
+                }
+                else
+                {
+                    return ChooseOption(list);
+                }
+            }
+            else
+            {
+                return ChooseOption(list);
+            }
+        }
         public void CheckInAndOut(LibraryItems item)
         {
 
@@ -198,7 +219,7 @@ namespace MidtermNew
         }
         #endregion
         #region Search Methods
-        public static void SearchBooksBy(List<Books> books)
+        public static  void SearchBooksBy(List<Books> books)
         {
             Console.WriteLine("How would you like to choose a book?\n1.View a full list of books\n2.Search by title\n3.Search by author");
             string input = Console.ReadLine();
@@ -208,11 +229,13 @@ namespace MidtermNew
             }
             else if (input == "2")
             {
-                Books.FilterBooksByTitle(books);
+                List<Books> bookOptions = Books.FilterBooksByTitle(books);
+                PrintBookList(bookOptions);
             }
             else if (input == "3")
             {
-                Books.FilterBooksByAuthor(books);
+               List<Books> bookOptions = Books.FilterBooksByAuthor(books);
+                PrintBookList(bookOptions);
             }
             else
             {
@@ -233,7 +256,13 @@ namespace MidtermNew
             }
             else if (input == "2")
             {
-                Music.FilterMusicByTitle(music);
+                List<Music> musicOptions = Music.FilterMusicByTitle(music);
+                PrintMusicList(musicOptions);
+            }
+            else if(input == "3")
+            {
+                List<Music> musicOptions = Music.FilterMusicByArtist(music);
+                PrintMusicList(musicOptions);
             }
             else
             {
@@ -252,7 +281,13 @@ namespace MidtermNew
             }
             else if (input == "2")
             {
-                Movies.FilterMoviesByTitle(movies);
+                List<Movies> movieOptions = Movies.FilterMoviesByTitle(movies);
+                PrintMoviesList(movieOptions);
+            }
+            else if(input == "3")
+            {
+                List<Movies> movieOptions = Movies.FilterMoviesByDirector(movies);
+                PrintMoviesList(movieOptions);
             }
             else
             {

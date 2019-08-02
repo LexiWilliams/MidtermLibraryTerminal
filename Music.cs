@@ -13,7 +13,7 @@ namespace MidtermNew
         {
 
         }
-        public Music(string artist, string barcode, string title, string checkOut, string genre, string year, string dueDate)
+        public Music(string barcode, string title, string checkOut, string genre, string year, string dueDate, string artist)
         : base(barcode, title, checkOut, genre, year, dueDate)
         {
 
@@ -22,50 +22,49 @@ namespace MidtermNew
         {
 
         }
-        public void FilterMusicByArtist(List<Music> musicList)
+        public static List<Music> FilterMusicByArtist(List<Music> musicList)
         {
             Console.WriteLine("What artist would you like to search for?");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
+            List<Music> musicOptions = new List<Music>();
             if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
             {
-                int counter = 0;
                 foreach (Music music in musicList)
                 {
-                    if (music.Artist == input)
+                    if (music.Artist.ToLower().Contains(input))
                     {
-                        counter++;
-                        Console.WriteLine($"{counter}. {music.Artist}");
+                        musicOptions.Add(music);
                     }
                 }
+                return musicOptions;
             }
             else
             {
                 Console.WriteLine("That is not a valid artist.\n");
-                FilterMusicByArtist(musicList);
+                return FilterMusicByArtist(musicList);
             }
 
         }
-        public static void FilterMusicByTitle(List<Music> musicList)
+        public static List<Music> FilterMusicByTitle(List<Music> musicList)
         {
             Console.WriteLine("What title would you like to search for?");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
+            List<Music> musicOptions = new List<Music>();
             if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
             {
-                int counter = 0;
                 foreach (Music music in musicList)
                 {
-                    counter++;
-                    if (music.Title.Contains(input))
+                    if (music.Title.ToLower().Contains(input))
                     {
-                        counter++;
-                        Console.WriteLine($"{counter}. {music.Title}");
+                        musicOptions.Add(music);
                     }
                 }
+                return musicOptions;
             }
             else
             {
                 Console.WriteLine("That is not a valid title.");
-                FilterMusicByTitle(musicList);
+               return FilterMusicByTitle(musicList);
             }
 
 

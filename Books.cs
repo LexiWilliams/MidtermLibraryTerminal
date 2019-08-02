@@ -20,44 +20,45 @@ namespace MidtermNew
         {
 
         }
-        public static void FilterBooksByAuthor(List<Books> bookList)
+        public static List<Books> FilterBooksByAuthor(List<Books> bookList)
         {
             Console.WriteLine("What author would you like to search for?");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
+            List<Books> bookOptions = new List<Books>();
             if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
             {
-                int counter = 0;
                 foreach (Books book in bookList)
                 {
-                    if (book.Author == input)
+                    if (book.Author.ToLower().Contains(input))
                     {
-                        counter++;
-                        Console.WriteLine($"{counter}. {book.Author}");
+                        bookOptions.Add(book);
                     }
                 }
+                return bookOptions;
             }
             else
             {
                 Console.WriteLine("That is not a valid author.\n");
-                Books.FilterBooksByAuthor(bookList);
+                return Books.FilterBooksByAuthor(bookList);
             }
         }
         public static List<Books> FilterBooksByTitle(List<Books> bookList)
         {
             Console.WriteLine("What title would you like to search for?");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
             List<Books> bookOptions = new List<Books>();
             if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
             {
-                int counter = 0;
                 foreach (Books book in bookList)
                 {
-                    if (book.Title.Contains(input))
+                    if (book.Title.ToLower().Contains(input))
                     {
-                        counter++;
-                        Console.WriteLine($"{counter}. {book.Title}");
                         bookOptions.Add(book);
                     }
+                }
+                foreach(Books x in bookOptions)
+                {
+                    Console.WriteLine(x.Title+x.Author);
                 }
                 return bookOptions;
             }
