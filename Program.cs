@@ -1,34 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace MidtermNew
 {
     class Program
     {
+
+        //return path needs to be switched to ReturnMedia() and return media needs to be fixed starting at check availability
         static void Main(string[] args)
         {
             //pulling info from text files and setting it to lists
-            List<Books> books = new List<Books>();
-            List<Music> music = new List<Music>();
-            List<Movies> movies = new List<Movies>();
-            Books.ReadFileBooks(books);
-            Music.ReadFileMusic(music);
-            Movies.ReadFileMovies(movies);
+            List<Books> books0 = new List<Books>();
+            List<Music> music0 = new List<Music>();
+            List<Movies> movies0 = new List<Movies>();
+            Books.ReadFileBooks(books0);
+            Music.ReadFileMusic(music0);
+            Movies.ReadFileMovies(movies0);
 
-            //used to add new stuff to text files
-            List<Books> addBook = new List<Books>();
-            List<Music> addMusic = new List<Music>();
-            List<Movies> addMovies = new List<Movies>();
+            //alphebatizes the lists by title
+            List<Books> books = books0.OrderBy(x => x.Title).ToList();
+            List<Movies> movies = movies0.OrderBy(x => x.Title).ToList();
+            List<Music> music = music0.OrderBy(x => x.Title).ToList();
+
 
             //main program
-            Console.WriteLine("Welcome to the Grand Circus Library!");
+            Console.WriteLine("Welcome to the Grand Circus Library!\n");
 
             bool runProgram = true;
             while (runProgram)
             {
-                runProgram = ChooseMedia(books, music, movies);
+                runProgram = ReturnOrGet(books, music, movies);
             }
+
+            //used to add new stuff to text files
+            //List<Books> addBook = new List<Books>();
+            //List<Music> addMusic = new List<Music>();
+            //List<Movies> addMovies = new List<Movies>();
         }
         #region Methods
         public static bool Continue()
@@ -45,33 +54,57 @@ namespace MidtermNew
                 return false;
             }
         }
-        public static bool ChooseMedia(List<Books> books, List<Music> music, List<Movies> movies)
+        public static bool ReturnOrGet(List<Books> books, List<Music> music, List<Movies> movies)
+        {
+            Console.WriteLine("Would you like to\n\t1.Check out a new item\n\t2.Return an item");
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out int userChoice))
+            {
+                if (userChoice == 1)
+                {
+                    CheckOutMedia(books, music, movies);
+                    return true;
+                }
+                else if (userChoice == 2)
+                {
+                    ReturnMedia(books, music, movies);
+                    return true;
+                }
+                else
+                {
+                    return ReturnOrGet(books, music, movies);
+                }
+            }
+            return ReturnOrGet(books, music, movies);
+        }
+
+        public static bool ReturnMedia(List<Books> books, List<Music> music, List<Movies> movies)
         {
             bool go = true;
             while (go)
             {
-                Console.WriteLine("What would you like to check out?\n\t1.Books\n\t2.Music\n\t3.Movies\n\t4.Exit");
+                Console.WriteLine("What would you like to return?\n\t1.Book\n\t2.Music\n\t3.Movie\n\t4.Exit");
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out int userChoice))
                 {
                     if (userChoice == 1)
                     {
                         List<Books> bookOptions = Books.SearchBooksBy(books);
-                        ChooseBookItem(bookOptions);
+                        Books.ChooseBookItemReturn(bookOptions);
                         go = false;
                         return true;
                     }
                     else if (userChoice == 2)
                     {
                         List<Music> musicOptions = Music.SearchMusicBy(music);
-                        ChooseMusicItem(musicOptions);
+                        Music.ChooseMusicItemReturn(musicOptions);
                         go = false;
                         return true;
                     }
                     else if (userChoice == 3)
                     {
                         List<Movies> movieOptions = Movies.SearchMoviesBy(movies);
-                        ChooseMoviesItem(movieOptions);
+                        Movies.ChooseMoviesItemReturn(movieOptions);
                         go = false;
                         return true;
                     }
@@ -84,17 +117,68 @@ namespace MidtermNew
                     {
                         Console.WriteLine("Sorry, I did not recognize that input. Please try again.\n");
                         go = true;
-                        return ChooseMedia(books, music, movies);
+                        return ReturnMedia(books, music, movies);
                     }
                 }
                 else
                 {
                     Console.WriteLine("Sorry, I did not recognize that input. Please try again.\n");
                     go = true;
-                    return ChooseMedia(books, music, movies);
+                    return ReturnMedia(books, music, movies);
                 }
             }
-            return ChooseMedia(books, music, movies);
+            return CheckOutMedia(books, music, movies);
+        }
+        public static bool CheckOutMedia(List<Books> books, List<Music> music, List<Movies> movies)
+        {
+            bool go = true;
+            while (go)
+            {
+                Console.WriteLine("What would you like to check out?\n\t1.Books\n\t2.Music\n\t3.Movies\n\t4.Exit");
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int userChoice))
+                {
+                    if (userChoice == 1)
+                    {
+                        List<Books> bookOptions = Books.SearchBooksBy(books);
+                        Books.ChooseBookItemCheckOut(bookOptions);
+                        go = false;
+                        return true;
+                    }
+                    else if (userChoice == 2)
+                    {
+                        List<Music> musicOptions = Music.SearchMusicBy(music);
+                        Music.ChooseMusicItemCheckOut(musicOptions);
+                        go = false;
+                        return true;
+                    }
+                    else if (userChoice == 3)
+                    {
+                        List<Movies> movieOptions = Movies.SearchMoviesBy(movies);
+                        Movies.ChooseMoviesItemCheckOut(movieOptions);
+                        go = false;
+                        return true;
+                    }
+                    else if (userChoice == 4)
+                    {
+                        go = false;
+                        return false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, I did not recognize that input. Please try again.\n");
+                        go = true;
+                        return CheckOutMedia(books, music, movies);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, I did not recognize that input. Please try again.\n");
+                    go = true;
+                    return CheckOutMedia(books, music, movies);
+                }
+            }
+            return CheckOutMedia(books, music, movies);
         }
         public static LibraryItems ChooseOption(List<LibraryItems> list)
         {
@@ -129,73 +213,7 @@ namespace MidtermNew
                 Console.WriteLine("Sorry, I did not recognize that input. Please try again\n");
             }
         }
-        public static void ChooseBookItem(List<Books> bookOptions)
-        {
-            Console.WriteLine("Choose a book:");
-            Books.PrintBookList(bookOptions);
-            string input = Console.ReadLine();
-            if (int.TryParse(input, out int num))
-            {
-                if (num > 0 && num <= bookOptions.Count)
-                {
-                    int index = num - 1;
-                    Console.WriteLine($"\tTitle: {bookOptions[index].Title}\n\tAuthor: {bookOptions[index].Author}\n\tGenre: " +
-                        $"{bookOptions[index].Genre}\n\tYear Published: {bookOptions[index].Year}\n\tMedium: {bookOptions[index].Medium}" +
-                        $"\n\tBarcode: {bookOptions[index].Barcode}\n\t \n\tStatus:{bookOptions[index].CheckedOut}");
-                    CheckAvailability(bookOptions[index]);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Input invalid.\n");
-                ChooseBookItem(bookOptions);
-            }
-        }
-        public static void ChooseMusicItem(List<Music> musicOptions)
-        {
-            Console.WriteLine("Choose an album:");
-            Music.PrintMusicList(musicOptions);
-            string input = Console.ReadLine();
-            if (int.TryParse(input, out int num))
-            {
-                if (num > 0 && num <= musicOptions.Count)
-                {
-                    int index = num - 1;
-                    Console.WriteLine($"\tTitle: {musicOptions[index].Title}\n\tArtist: {musicOptions[index].Artist}\n\tGenre: " +
-                        $"{musicOptions[index].Genre}\n\tYear Published: {musicOptions[index].Year}" +
-                        $"\n\tBarcode: {musicOptions[index].Barcode}\n\t \n\tStatus:{musicOptions[index].CheckedOut}");
-                    CheckAvailability(musicOptions[index]);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Input invalid.\n");
-                ChooseMusicItem(musicOptions);
-            }
-        }
-        public static void ChooseMoviesItem(List<Movies> movieOptions)
-        {
-            Console.WriteLine("Choose a movie:");
-            Movies.PrintMoviesList(movieOptions);
-            string input = Console.ReadLine();
-            if (int.TryParse(input, out int num))
-            {
-                if (num > 0 && num <= movieOptions.Count)
-                {
-                    int index = num - 1;
-                    Console.WriteLine($"\tTitle: {movieOptions[index].Title}\n\tArtist: {movieOptions[index].Director}\n\tGenre: " +
-                        $"{movieOptions[index].Genre}\n\tYear Published: {movieOptions[index].Year}" +
-                        $"\n\tBarcode: {movieOptions[index].Barcode}\n\t \n\tStatus:{movieOptions[index].CheckedOut}");
-                    CheckAvailability(movieOptions[index]);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Input invalid.\n");
-                ChooseMoviesItem(movieOptions);
-            }
-        }
-        public static void CheckAvailability(LibraryItems item)
+        public static void CheckAvailabilityCheckOut(LibraryItems item)
         {
             if (item.CheckedOut == "Available")
             {
@@ -217,12 +235,43 @@ namespace MidtermNew
                 else
                 {
                     Console.WriteLine("Invalid input.\n");
-                    CheckAvailability(item);
+                    CheckAvailabilityCheckOut(item);
                 }
             }
             else if (item.CheckedOut == "Not available")
             {
                 Console.WriteLine($"{item.Title} is not available.\n");
+            }
+        }
+        public static void CheckAvailabilityReturn(LibraryItems item)
+        {
+            if (item.CheckedOut == "Available")
+            {
+                Console.WriteLine("This item has not yet been checked out.");
+            }
+            else if (item.CheckedOut == "Not available")
+            {
+                Console.WriteLine($"{item.Title} is due back on {item.DueDate}.\n");
+                Console.WriteLine("Would you like to return this item?");
+                string input = Console.ReadLine();
+                if (Validator.IsYesNo(input))
+                {
+                    if (input == "yes" || input == "y")
+                    {
+                        Console.WriteLine($"{item.Title} successfully returned.\n");
+                        CheckInCheckOut(item);
+                        ChangeDueDate(item);
+                    }
+                    else if (input == "no" || input == "n")
+                    {
+                        Console.WriteLine($"{item.Title} was not returned.\n");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input.\n");
+                    CheckAvailabilityCheckOut(item);
+                }
             }
         }
         public static void ChangeDueDate(LibraryItems item)
@@ -231,7 +280,7 @@ namespace MidtermNew
             {
                 DateTime currentDate = DateTime.Now; 
                 double timeToAdd = 14d;
-                string isDue = currentDate.AddDays(timeToAdd).ToString("dd/MM/yyyy");
+                string isDue = currentDate.AddDays(timeToAdd).ToString("MM/dd/yyyy");
                 item.DueDate = isDue;
             }
             else

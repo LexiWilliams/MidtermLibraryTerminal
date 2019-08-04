@@ -107,6 +107,64 @@ namespace MidtermNew
                 Console.WriteLine($"\t{count}. {x.Title}");
             }
         }
+        public static void ChooseBookItemReturn(List<Books> bookOptions)
+        {
+            if (bookOptions.Count > 0)
+            {
+                Console.WriteLine("Choose a book:");
+                Books.PrintBookList(bookOptions);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int num))
+                {
+                    if (num > 0 && num <= bookOptions.Count)
+                    {
+                        int index = num - 1;
+                        Console.WriteLine($"\tTitle: {bookOptions[index].Title}\n\tAuthor: {bookOptions[index].Author}\n\tGenre: " +
+                            $"{bookOptions[index].Genre}\n\tYear Published: {bookOptions[index].Year}\n\tMedium: {bookOptions[index].Medium}" +
+                            $"\n\tBarcode: {bookOptions[index].Barcode}\n\t \n\tStatus:{bookOptions[index].CheckedOut}");
+                        Program.CheckAvailabilityReturn(bookOptions[index]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input invalid.\n");
+                    ChooseBookItemReturn(bookOptions);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, there are no matching books.\n");
+            }
+        }
+        public static void ChooseBookItemCheckOut(List<Books> bookOptions)
+        {
+            if (bookOptions.Count > 0)
+            {
+                Console.WriteLine("Choose a book:");
+                Books.PrintBookList(bookOptions);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int num))
+                {
+                    if (num > 0 && num <= bookOptions.Count)
+                    {
+                        int index = num - 1;
+                        Console.WriteLine($"\tTitle: {bookOptions[index].Title}\n\tAuthor: {bookOptions[index].Author}\n\tGenre: " +
+                            $"{bookOptions[index].Genre}\n\tYear Published: {bookOptions[index].Year}\n\tMedium: {bookOptions[index].Medium}" +
+                            $"\n\tBarcode: {bookOptions[index].Barcode}\n\t \n\tStatus:{bookOptions[index].CheckedOut}");
+                        Program.CheckAvailabilityCheckOut(bookOptions[index]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input invalid.\n");
+                    ChooseBookItemCheckOut(bookOptions);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, there are no matching books.\n");
+            }
+        }
         public static void ReadFileBooks(List<Books> books)
         {
             StreamReader reader = new StreamReader("../../Books.txt");

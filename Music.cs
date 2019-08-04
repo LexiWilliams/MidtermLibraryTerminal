@@ -112,6 +112,64 @@ namespace MidtermNew
                 Console.WriteLine($"\t{count}. {x.Title}");
             }
         }
+        public static void ChooseMusicItemReturn(List<Music> musicOptions)
+        {
+            if (musicOptions.Count > 0)
+            {
+                Console.WriteLine("Choose an album:");
+                Music.PrintMusicList(musicOptions);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int num))
+                {
+                    if (num > 0 && num <= musicOptions.Count)
+                    {
+                        int index = num - 1;
+                        Console.WriteLine($"\tTitle: {musicOptions[index].Title}\n\tArtist: {musicOptions[index].Artist}\n\tGenre: " +
+                            $"{musicOptions[index].Genre}\n\tYear Published: {musicOptions[index].Year}" +
+                            $"\n\tBarcode: {musicOptions[index].Barcode}\n\t \n\tStatus:{musicOptions[index].CheckedOut}");
+                        Program.CheckAvailabilityReturn(musicOptions[index]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input invalid.\n");
+                    ChooseMusicItemReturn(musicOptions);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, there are no matching albums.\n");
+            }
+        }
+        public static void ChooseMusicItemCheckOut(List<Music> musicOptions)
+        {
+            if (musicOptions.Count > 0)
+            {
+                Console.WriteLine("Choose an album:");
+                Music.PrintMusicList(musicOptions);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int num))
+                {
+                    if (num > 0 && num <= musicOptions.Count)
+                    {
+                        int index = num - 1;
+                        Console.WriteLine($"\tTitle: {musicOptions[index].Title}\n\tArtist: {musicOptions[index].Artist}\n\tGenre: " +
+                            $"{musicOptions[index].Genre}\n\tYear Published: {musicOptions[index].Year}" +
+                            $"\n\tBarcode: {musicOptions[index].Barcode}\n\t \n\tStatus:{musicOptions[index].CheckedOut}");
+                        Program.CheckAvailabilityCheckOut(musicOptions[index]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input invalid.\n");
+                    ChooseMusicItemCheckOut(musicOptions);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, there are no matching albums.\n");
+            }
+        }
         public static void ReadFileMusic(List<Music> music)
         {
             StreamReader reader = new StreamReader("../../Music.txt");

@@ -106,6 +106,64 @@ namespace MidtermNew
                 Console.WriteLine($"\t{count}. {x.Title}");
             }
         }
+        public static void ChooseMoviesItemReturn(List<Movies> movieOptions)
+        {
+            if (movieOptions.Count > 0)
+            {
+                Console.WriteLine("Choose a movie:");
+                Movies.PrintMoviesList(movieOptions);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int num))
+                {
+                    if (num > 0 && num <= movieOptions.Count)
+                    {
+                        int index = num - 1;
+                        Console.WriteLine($"\tTitle: {movieOptions[index].Title}\n\tArtist: {movieOptions[index].Director}\n\tGenre: " +
+                            $"{movieOptions[index].Genre}\n\tYear Published: {movieOptions[index].Year}" +
+                            $"\n\tBarcode: {movieOptions[index].Barcode}\n\t \n\tStatus:{movieOptions[index].CheckedOut}");
+                        Program.CheckAvailabilityReturn(movieOptions[index]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input invalid.\n");
+                    ChooseMoviesItemReturn(movieOptions);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, there are no matching movies.");
+            }
+        }
+        public static void ChooseMoviesItemCheckOut(List<Movies> movieOptions)
+        {
+            if (movieOptions.Count > 0)
+            {
+                Console.WriteLine("Choose a movie:");
+                Movies.PrintMoviesList(movieOptions);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int num))
+                {
+                    if (num > 0 && num <= movieOptions.Count)
+                    {
+                        int index = num - 1;
+                        Console.WriteLine($"\tTitle: {movieOptions[index].Title}\n\tArtist: {movieOptions[index].Director}\n\tGenre: " +
+                            $"{movieOptions[index].Genre}\n\tYear Published: {movieOptions[index].Year}" +
+                            $"\n\tBarcode: {movieOptions[index].Barcode}\n\t \n\tStatus:{movieOptions[index].CheckedOut}");
+                        Program.CheckAvailabilityCheckOut(movieOptions[index]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input invalid.\n");
+                    ChooseMoviesItemCheckOut(movieOptions);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry, there are no matching movies.");
+            }
+        }
         public static void ReadFileMovies(List<Movies> movies)
         {
             StreamReader reader = new StreamReader("../../Movies.txt");
