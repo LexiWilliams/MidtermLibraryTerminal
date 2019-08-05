@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Linq;
 
 namespace MidtermNew
 {
@@ -33,7 +34,7 @@ namespace MidtermNew
             Console.WriteLine("What author would you like to search for?");
             string input = Console.ReadLine().ToLower();
             List<Books> bookOptions = new List<Books>();
-            if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
+            if (Regex.IsMatch(input, @"^[a-zA-Z. ']+$"))
             {
                 foreach (Books book in bookList)
                 {
@@ -41,7 +42,7 @@ namespace MidtermNew
                     {
                         bookOptions.Add(book);
                     }
-                    
+
                 }
                 return bookOptions;
             }
@@ -56,7 +57,7 @@ namespace MidtermNew
             Console.WriteLine("What title would you like to search for?");
             string input = Console.ReadLine().ToLower();
             List<Books> bookOptions = new List<Books>();
-            if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
+            if (Regex.IsMatch(input, @"^[a-zA-Z. ']+$"))
             {
                 foreach (Books book in bookList)
                 {
@@ -70,7 +71,7 @@ namespace MidtermNew
             else
             {
                 Console.WriteLine("That is not a valid title.\n");
-               return Books.FilterBooksByTitle(bookList);
+                return Books.FilterBooksByTitle(bookList);
             }
         }
         public static List<Books> SearchBooksBy(List<Books> books)
@@ -169,6 +170,7 @@ namespace MidtermNew
         {
             StreamReader reader = new StreamReader("../../Books.txt");
             string line = reader.ReadLine();
+            
             while (line != null)
             {
                 string[] words = line.Split('|');
@@ -177,17 +179,106 @@ namespace MidtermNew
             }
             reader.Close();
         }
-        public static void WriteFileBooks(List<Books> addBooks)
+        public static void WriteFileUpdateBooks(List<Books> addBooks)
         {
             StreamWriter writer = new StreamWriter("../../Books.txt");
 
             foreach (Books book in addBooks)
             {
-                File.AppendAllText("../../Books.txt", string.Format($"\n{book.Barcode}|{book.Title}|{book.CheckedOut}|{book.Genre}|" +
-                    $"{book.Year}|{book.DueDate}|{book.Author}|{book.Medium}"));
+                writer.WriteLine($"{book.Barcode}|{book.Title}|{book.CheckedOut}|{book.Genre}|" +
+                    $"{book.Year}|{book.DueDate}|{book.Author}|{book.Medium}");
             }
             writer.Close();
         }
+        public static void AddNewBook(List<Books> books)
+        {
+            bool go = true;
+            Books newBook = new Books();
+            while (go)
+            {
+                Console.WriteLine("What is the book's title?");
+                string input = Console.ReadLine();
+                if(!string.IsNullOrWhiteSpace(input))
+                    {
+                    newBook.Title = input;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid title.\n");
+                    go = true;
+                }
+            }
+            go= true;
+            while (go)
+            {
+                Console.WriteLine("Who is the author?");
+                string input = Console.ReadLine();
+                if (Regex.IsMatch(input, @"^[a-zA-Z .']+$"))
+                {
+                    newBook.Author = input;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid author.\n");
+                    go = true;
+                }
+            }
+            while (go)
+            {
+                Console.WriteLine("What genre is this book?");
+                string input = Console.ReadLine();
+                if (Regex.IsMatch(input, @"^[a-zA-Z /-]+$"))
+                {
+                    newBook.Genre = input;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid year.\n");
+                    go = true;
+                }
+            }
+           
+            while (go)
+            {
+                Console.WriteLine("What year was it published?");
+                string year = Console.ReadLine();
+                if (Regex.IsMatch(year, @"^[0-9]{4}$"))
+                {
+                    newBook.Year = year;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid year.\n");
+                    go = true;
+                }
+            }
+            go = true;
+            while (go)
+            {
+                Console.WriteLine("Is it hardcover or softcover?");
+                string media = Console.ReadLine().ToLower();
+                if (media == "softcover" || media == "hardcover")
+                {
+                    newBook.Medium = media;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter hardcover or softcover.\n");
+                    go = true;
+                }
+            }
+            newBook.CheckedOut = "On shelf";
+            newBook.DueDate = "Not checked out";
+            string random = Program.RandomString(10);
+            newBook.Barcode = $"MT{random}";
+            books.Add(newBook);
+            Console.WriteLine($"{newBook.Title} was successfully added.\n");
 
+        }
     }
 }

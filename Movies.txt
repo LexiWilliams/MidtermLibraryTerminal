@@ -1,12 +1,13 @@
-﻿696550067398|What We Do in the Shadows|Available|Comedy|2014|Not checked out|Taika Waititi
-696545259050|Tombstone|Available|Drama|1993|Not checked out|George P. Cosmatos
-5030462012506|Night of the Living Dead|Available|Horror|1968|Not checked out|George A. Romero
-043396087170|Once Upon a Time in Mexico|Available|Action|2003|Not checked out|Robert Rodriguez
-796019803885|Death Proof|Available|Action|2007|Not checked out|Quentin Tarantino
-5030697038012|Fast Times at Ridgemont High|Available|Drama|1982|Not checked out|Amy Heckerling
-696545347641|Clerks|Available|Comedy|1994|Not checked out|Kevin Smith
-032429159649|Top Gun|Available|Action|1986|Not checked out|Tony Scott
-696545413629|Alien|Available|Horror|1979|Not checked out|Ridley Scott
-817213977667|The Sunset Limited|Available|Drama|2011|Not checked out|Tommy Lee Jones
-025192351815|The Big Lebowski|Available|Comedy|1998|Not checked out|The Coen Brothers
-696553596802|Baby Driver|Available|Drama|2017|Not checked out|Edgar Wright
+MTACK4MX9Y4B|Alien|On shelf|Horror|1979|Not checked out|Ridley Scott
+MTMTTVQD9SQP|Baby Driver|On shelf|Drama|2017|Not checked out|Edgar Wright
+MTR2LALKAV3J|Clerks|On shelf|Comedy|1994|Not checked out|Kevin Smith
+MTR1O0NR8ZCB|Death Proof|On shelf|Action|2007|Not checked out|Quentin Tarantino
+MTH89GZ7DPGH|Fast Times at Ridgemont High|On shelf|Drama|1982|Not checked out|Amy Heckerling
+MTOL67ZH1JSB|Harry and the Hendersons|Checked out|Horror|1992|08/19/2019|Micky Smalls
+MTXO4VUVF2H9|Night of the Living Dead|On shelf|Horror|1968|Not checked out|George A. Romero
+MTEKPPHS2ELO|Once Upon a Time in Mexico|On shelf|Action|2003|Not checked out|Robert Rodriguez
+MTHUOV5F4QBF|The Big Lebowski|On shelf|Comedy|1998|Not checked out|The Coen Brothers
+MT0YGBN3DOWE|The Sunset Limited|On shelf|Drama|2011|Not checked out|Tommy Lee Jones
+MT2KIHCD5R0G|Tombstone|On shelf|Drama|1993|Not checked out|George P. Cosmatos
+MTPW8E3C9JZO|Top Gun|On shelf|Action|1986|Not checked out|Tony Scott
+MT0Z1CIQDOBO|What We Do in the Shadows|On shelf|Comedy|2014|Not checked out|Taika Waititi

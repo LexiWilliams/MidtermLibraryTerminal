@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Linq;
 
 namespace MidtermNew
 {
@@ -34,7 +35,7 @@ namespace MidtermNew
             Console.WriteLine("What artist would you like to search for?");
             string input = Console.ReadLine().ToLower();
             List<Music> musicOptions = new List<Music>();
-            if (Regex.IsMatch(input, @"^[a-zA-Z. ]+$"))
+            if (Regex.IsMatch(input, @"^[a-zA-Z. /']+$"))
             {
                 foreach (Music music in musicList)
                 {
@@ -71,7 +72,7 @@ namespace MidtermNew
             else
             {
                 Console.WriteLine("That is not a valid title.");
-               return FilterMusicByTitle(musicList);
+                return FilterMusicByTitle(musicList);
             }
 
 
@@ -182,7 +183,7 @@ namespace MidtermNew
             }
             reader.Close();
         }
-        public static void WriteFileMusic(List<Music> addMusic)
+        public static void WriteFileNewMusic(List<Music> addMusic)
         {
             StreamWriter writer = new StreamWriter("../../Music.txt");
 
@@ -192,6 +193,96 @@ namespace MidtermNew
                     $"{music.Year}|{music.DueDate}|{music.Artist}"));
             }
             writer.Close();
+        }
+        public static void WriteFileUpdateMusic(List<Music> music)
+        {
+            StreamWriter writer = new StreamWriter("../../Music.txt");
+
+            foreach (Music album in music)
+            {
+                writer.WriteLine(string.Format($"{album.Barcode}|{album.Title}|{album.CheckedOut}|{album.Genre}|" +
+                    $"{album.Year}|{album.DueDate}|{album.Artist}"));
+            }
+            writer.Close();
+        }
+
+        public static void AddNewMusic(List<Music> music)
+        {
+            bool go = true;
+            Music newMusic = new Music();
+
+            while (go)
+            {
+                Console.WriteLine("What is the album's title?");
+                string input = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    newMusic.Title = input;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid title.\n");
+                    go = true;
+                }
+            }
+            go = true;
+            while (go)
+            {
+                Console.WriteLine("Who is the artist?");
+                string input = Console.ReadLine();
+                if (Regex.IsMatch(input, @"^[a-zA-Z /-]+$"))
+                {
+                    newMusic.Artist = input;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid artist.\n");
+                    go = true;
+                }
+            }
+            go = true;
+            while (go)
+            {
+                Console.WriteLine("What genre is this album?");
+                string input = Console.ReadLine();
+                if (Regex.IsMatch(input, @"^[a-zA-Z /-]+$"))
+                {
+                    newMusic.Genre = input;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid genre.\n");
+                    go = true;
+                }
+            }
+            go = true;
+            while (go)
+            {
+                Console.WriteLine("What year was it released?");
+                string year = Console.ReadLine();
+                if (Regex.IsMatch(year, @"^[0-9]{4}$"))
+                {
+                    newMusic.Year = year;
+                    go = false;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid year.\n");
+                    go = true;
+                }
+            }
+
+            newMusic.CheckedOut = "On shelf";
+            newMusic.DueDate = "Not checked out";
+            string random = Program.RandomString(10);
+            newMusic.Barcode = $"MT{random}";
+            music.Add(newMusic);
+            music.OrderBy(x => x.Title).ToList();
+            Console.WriteLine($"{newMusic.Title} was successfully added.\n");
         }
     }
 }

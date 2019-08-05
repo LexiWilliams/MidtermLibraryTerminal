@@ -7,8 +7,7 @@ namespace MidtermNew
 {
     class Program
     {
-
-        //return path needs to be switched to ReturnMedia() and return media needs to be fixed starting at check availability
+        private static Random random = new Random();
         static void Main(string[] args)
         {
             //pulling info from text files and setting it to lists
@@ -18,12 +17,12 @@ namespace MidtermNew
             Books.ReadFileBooks(books0);
             Music.ReadFileMusic(music0);
             Movies.ReadFileMovies(movies0);
+           
 
             //alphebatizes the lists by title
             List<Books> books = books0.OrderBy(x => x.Title).ToList();
-            List<Movies> movies = movies0.OrderBy(x => x.Title).ToList();
+            List < Movies> movies = movies0.OrderBy(x => x.Title).ToList();
             List<Music> music = music0.OrderBy(x => x.Title).ToList();
-
 
             //main program
             Console.WriteLine("Welcome to the Grand Circus Library!\n");
@@ -31,32 +30,59 @@ namespace MidtermNew
             bool runProgram = true;
             while (runProgram)
             {
-                runProgram = ReturnOrGet(books, music, movies);
-            }
+                books = books.OrderBy(x => x.Title).ToList();
+                movies = movies.OrderBy(x => x.Title).ToList();
+                music = music.OrderBy(x => x.Title).ToList();
 
-            //used to add new stuff to text files
-            //List<Books> addBook = new List<Books>();
-            //List<Music> addMusic = new List<Music>();
-            //List<Movies> addMovies = new List<Movies>();
+                runProgram = ReturnOrGet(books, music, movies);
+                
+            }
+            Books.WriteFileUpdateBooks(books); 
+            Movies.WriteFileUpdateMovies(movies);
+            Music.WriteFileUpdateMusic(music);
         }
         #region Methods
-        public static bool Continue()
+        public static string RandomString(int length)
         {
-            Console.WriteLine($"Press {'y'} to continue or press any other key to exit.");
-            char response = Console.ReadKey(true).KeyChar;
-            if (response == 'y')
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static void AddNewMedia(List<Books> books, List<Music> music, List<Movies> movies)
+        {
+            bool go = true;
+            while (go)
             {
-                return true;
-            }
-            else
-            {
-
-                return false;
+                Console.WriteLine("Would you like to add\n\t1.New book\n\t2.New Music\n\t3.New Movie\n\t4.Return to main menu\n");
+                string input = Console.ReadLine();
+                if (input == "1")
+                {
+                    Books.AddNewBook(books);
+                    go = true;
+                }
+                else if (input == "2")
+                {
+                    Music.AddNewMusic(music);
+                    go = true;
+                }
+                else if (input == "3")
+                {
+                    Movies.AddNewMovie(movies);
+                    go = true;
+                }
+                else if (input == "4")
+                {
+                    go = false;
+                }
+                else
+                {
+                    AddNewMedia(books, music, movies);
+                }
             }
         }
         public static bool ReturnOrGet(List<Books> books, List<Music> music, List<Movies> movies)
         {
-            Console.WriteLine("Would you like to\n\t1.Check out a new item\n\t2.Return an item");
+            Console.WriteLine("Would you like to\n\t1.Check out a new item\n\t2.Return an item\n\t3.Add a new item\n\t4.Exit");
             string input = Console.ReadLine();
             if (int.TryParse(input, out int userChoice))
             {
@@ -70,6 +96,16 @@ namespace MidtermNew
                     ReturnMedia(books, music, movies);
                     return true;
                 }
+                else if (userChoice == 3)
+                {
+                    AddNewMedia(books, music, movies);
+                    return true;
+                }
+                else if (userChoice == 4)
+                {
+                    Console.WriteLine("Goodbye.");
+                    return false;
+                }
                 else
                 {
                     return ReturnOrGet(books, music, movies);
@@ -77,7 +113,6 @@ namespace MidtermNew
             }
             return ReturnOrGet(books, music, movies);
         }
-
         public static bool ReturnMedia(List<Books> books, List<Music> music, List<Movies> movies)
         {
             bool go = true;
@@ -215,19 +250,21 @@ namespace MidtermNew
         }
         public static void CheckAvailabilityCheckOut(LibraryItems item)
         {
-            if (item.CheckedOut == "Available")
+            if (item.CheckedOut == "On shelf")
             {
                 Console.WriteLine($"{item.Title} is available. Would you like to check it out?");
                 string input = Console.ReadLine().ToLower();
                 if (Validator.IsYesNo(input))
                 {
-                    if(input == "yes" || input == "y")
+                    if (input == "yes" || input == "y")
                     {
-                        Console.WriteLine($"{item.Title} was checked out.");
                         CheckInCheckOut(item);
                         ChangeDueDate(item);
+                        Console.WriteLine($"{item.Title} was checked out. Please return by {item.DueDate}.\n");
+                      
+
                     }
-                    else if(input == "no" || input == "n")
+                    else if (input == "no" || input == "n")
                     {
                         Console.WriteLine($"{item.Title} was not checked out.\n");
                     }
@@ -238,18 +275,18 @@ namespace MidtermNew
                     CheckAvailabilityCheckOut(item);
                 }
             }
-            else if (item.CheckedOut == "Not available")
+            else if (item.CheckedOut == "Checked out")
             {
                 Console.WriteLine($"{item.Title} is not available.\n");
             }
         }
         public static void CheckAvailabilityReturn(LibraryItems item)
         {
-            if (item.CheckedOut == "Available")
+            if (item.CheckedOut == "On shelf")
             {
                 Console.WriteLine("This item has not yet been checked out.");
             }
-            else if (item.CheckedOut == "Not available")
+            else if (item.CheckedOut == "Checked out")
             {
                 Console.WriteLine($"{item.Title} is due back on {item.DueDate}.\n");
                 Console.WriteLine("Would you like to return this item?");
@@ -276,9 +313,9 @@ namespace MidtermNew
         }
         public static void ChangeDueDate(LibraryItems item)
         {
-            if(item.DueDate == "Not checked out")
+            if (item.DueDate == "Not checked out")
             {
-                DateTime currentDate = DateTime.Now; 
+                DateTime currentDate = DateTime.Now;
                 double timeToAdd = 14d;
                 string isDue = currentDate.AddDays(timeToAdd).ToString("MM/dd/yyyy");
                 item.DueDate = isDue;
@@ -290,13 +327,13 @@ namespace MidtermNew
         }
         public static void CheckInCheckOut(LibraryItems item)
         {
-            if (item.CheckedOut == "Available")
+            if (item.CheckedOut == "On shelf")
             {
-                item.CheckedOut = "Not available";
+                item.CheckedOut = "Checked out";
             }
-            else if (item.CheckedOut == "Not available")
+            else if (item.CheckedOut == "Checked out")
             {
-                item.CheckedOut = "Available";
+                item.CheckedOut = "On shelf";
             }
         }
         #endregion

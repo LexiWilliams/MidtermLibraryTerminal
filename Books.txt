@@ -1,13 +1,13 @@
-﻿6sadffs8d7|Gone With the Wind|Available|Historical Fiction|1936|Not checked out|Margaret Mitchell|Paperback
-sdaf87sda6f|The Hobbit|Available|High Fantasy|1937|Not checked out|JRR Tolkien|paperback
-sdfg7fs89d|Paper Towns|Available|young adult|2008|Not checked out|John Green|paperback
-asf89as7f987|IT|Available|Horror|1986|Not checked out|Stephen King|hardcover
-sad9f8asd7|Pride and Prejudice|Available|Classic Regency|1813|Not checked out|Jane Austen|paperback
-asd89f7asd|The Notebook|Available|Romance|1996|Not checked out|Nicholas Sparks|paperback
-asd87f96asd|Harry Potter and the Philosopher's Stone|Available|Fantasy|1998|Not checked out|J. K. Rowling|hardcover
-s87fd676ff|Harry Potter and the Chamber of Secrets|Available|Fantasy|1998|Not checked out|J. K. Rowling|hardcover
-sadf76dsa|Harry Potter and the Prisoner of Azkaban|Available|Fantasy|1999|Not checked out|J. K. Rowling|paperback
-sd7fsad8f76|Harry Potter and the Goblet of Fire|Available|Fantasy|2000|Not checked out|J. K. Rowling|paperback
-sdf76fs7|Harry Potter and the Order of the Phoenix|Available|Fantasy|2003|Not checked out|J. K. Rowling|hardover
-asdf876sad|Harry Potter and the Half-Blood Prince|Available|Fantasy|2005|Not checked out|J. K. Rowling|paperback
-asdf8976asd|Harry Potter and the Deathly Hallows|Available|Fantasy|2007|Not checked out|J. K. Rowling|paperback
+MTEF8VP68OY5|Gone With the Wind|Checked out|Historical Fiction|1936|08/19/2019|Margaret Mitchell|Paperback
+MTU266DHOJ1F|Harry Potter and the Chamber of Secrets|On shelf|Fantasy|1998|Not checked out|J. K. Rowling|hardcover
+MTMVLC1K2IZR|Harry Potter and the Deathly Hallows|On shelf|Fantasy|2007|Not checked out|J. K. Rowling|paperback
+MT688BUP4Z2N|Harry Potter and the Goblet of Fire|On shelf|Fantasy|2000|Not checked out|J. K. Rowling|paperback
+MTWTVQ4Z2D2C|Harry Potter and the Half-Blood Prince|On shelf|Fantasy|2005|Not checked out|J. K. Rowling|paperback
+MTZKII9S453E|Harry Potter and the Order of the Phoenix|On shelf|Fantasy|2003|Not checked out|J. K. Rowling|hardover
+MTD0ZG8W45MY|Harry Potter and the Philosopher's Stone|On shelf|Fantasy|1998|Not checked out|J. K. Rowling|hardcover
+MTMZQNT2A4IC|Harry Potter and the Prisoner of Azkaban|On shelf|Fantasy|1999|Not checked out|J. K. Rowling|paperback
+MTSYPX2WZ0CC|IT|On shelf|Horror|1986|Not checked out|Stephen King|hardcover
+MTU95YJ64OSH|Paper Towns|On shelf|young adult|2008|Not checked out|John Green|paperback
+MT571EZA34YG|Pride and Prejudice|On shelf|Classic Regency|1813|Not checked out|Jane Austen|paperback
+MT6D2JDN32DX|The Hobbit|On shelf|High Fantasy|1937|Not checked out|JRR Tolkien|paperback
+MT8VLAGU6L71|The Notebook|On shelf|Romance|1996|Not checked out|Nicholas Sparks|paperback

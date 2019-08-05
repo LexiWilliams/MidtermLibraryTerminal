@@ -12,3 +12,10 @@ C:\Users\lexas\OneDrive\Desktop\C#\blah\MidtermLibraryTerminal\obj\Debug\Midterm
 C:\Users\lexas\OneDrive\Desktop\C#\blah\MidtermLibraryTerminal\obj\Debug\MidtermNew.csproj.CoreCompileInputs.cache
 C:\Users\lexas\OneDrive\Desktop\C#\blah\MidtermLibraryTerminal\obj\Debug\MidtermNew.exe
 C:\Users\lexas\OneDrive\Desktop\C#\blah\MidtermLibraryTerminal\obj\Debug\MidtermNew.pdb
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\bin\Debug\MidtermNew.exe.config
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\bin\Debug\MidtermNew.exe
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\bin\Debug\MidtermNew.pdb
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\obj\Debug\MidtermNew.csprojAssemblyReference.cache
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\obj\Debug\MidtermNew.csproj.CoreCompileInputs.cache
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\obj\Debug\MidtermNew.exe
+C:\Users\lexas\OneDrive\Desktop\C#\Midterm\MidtermLibraryTerminal\obj\Debug\MidtermNew.pdb
