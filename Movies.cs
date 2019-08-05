@@ -204,7 +204,7 @@ namespace MidtermNew
             Movies newMovie = new Movies();
 
             while (go)
-            {ear
+            {
                 Console.WriteLine("What is the movies's title?");
                 string input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
