@@ -251,10 +251,11 @@ namespace MidtermNew
                 }
             }
             go = true;
-            Console.WriteLine("What year was it published?");
-            string year = Console.ReadLine();
+            
             while (go)
             {
+                Console.WriteLine("What year was it published?");
+                string year = Console.ReadLine();
                 if (Regex.IsMatch(year, @"^[0-9]{4}$"))
                 {
                     newMovie.Year = year;
