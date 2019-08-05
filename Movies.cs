@@ -23,6 +23,7 @@ namespace MidtermNew
         }
         public static List<Movies> FilterMoviesByDirector(List<Movies> movieList)
         {
+            Console.Clear();
             Console.WriteLine("What director would you like to search for?");
             string input = Console.ReadLine().ToLower();
             List<Movies> movieOptions = new List<Movies>();

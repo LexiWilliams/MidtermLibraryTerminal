@@ -273,7 +273,7 @@ namespace MidtermNew
         public static void SearchMoviesBy(List<Movies> movies)
         {
             Console.WriteLine("How would you like to choose a movie?\n\t1.View a full list of movies\n\t2.Search by title" +
-                "\n3.Search by director");
+                "\n\t3.Search by director");
             string input = Console.ReadLine();
             if (input == "1")
             {

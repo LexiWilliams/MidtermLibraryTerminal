@@ -5,3 +5,10 @@ C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\bin\Debug\MidtermNew.ex
 C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\bin\Debug\MidtermNew.pdb
 C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\obj\Debug\MidtermNew.exe
 C:\Users\lexas\OneDrive\Desktop\C#\MidtermNew\MidtermNew\obj\Debug\MidtermNew.pdb
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\bin\Debug\MidtermNew.exe.config
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\bin\Debug\MidtermNew.exe
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\bin\Debug\MidtermNew.pdb
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\obj\Debug\MidtermNew.csprojAssemblyReference.cache
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\obj\Debug\MidtermNew.csproj.CoreCompileInputs.cache
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\obj\Debug\MidtermNew.exe
+C:\Users\outvi\source\repos\MidtermLibraryTerminal\obj\Debug\MidtermNew.pdb

@@ -1,0 +1,13 @@
+6sadffs8d7|Gone With the Wind|On Shelf|Historical Fiction|1936|No Due Date|Margaret Mitchell|Paperback
+sdaf87sda6f|The Hobbit|On Shelf|High Fantasy|1937|No Due Date|JRR Tolkien|paperback
+sdfg7fs89d|Paper Towns|On Shelf|young adult|2008|No Due Date|John Green|paperback
+asf89as7f987|IT|On Shelf|Horror|1986|No Due Date|Stephen King|hardcover
+sad9f8asd7|Pride and Prejudice|On Shelf|Classic Regency|1813|No Due Date|Jane Austen|paperback
+asd89f7asd|The Notebook|On Shelf|Romance|1996|No Due Date|Nicholas Sparks|paperback
+asd87f96asd|Harry Potter and the Philosopher's Stone|On Shelf|Fantasy|1998|No Due Date|J. K. Rowling|hardcover
+s87fd676ff|Harry Potter and the Chamber of Secrets|On Shelf|Fantasy|1998|No Due Date|J. K. Rowling|hardcover
+sadf76dsa|Harry Potter and the Prisoner of Azkaban|On Shelf|Fantasy|1999|No Due Date|J. K. Rowling|paperback
+sd7fsad8f76|Harry Potter and the Goblet of Fire|On Shelf|Fantasy|2000|No Due Date|J. K. Rowling|paperback
+sdf76fs7|Harry Potter and the Order of the Phoenix|On Shelf|Fantasy|2003|No Due Date|J. K. Rowling|hardover
+asdf876sad|Harry Potter and the Half-Blood Prince|On Shelf|Fantasy|2005|No Due Date|J. K. Rowling|paperback
+asdf8976asd|Harry Potter and the Deathly Hallows|On Shelf|Fantasy|2007|No Due Date|J. K. Rowling|paperback
